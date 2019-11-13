@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             
+             xmlns:viewModels="clr-namespace:CarouselDemo.ViewModels"
+             xmlns:models="clr-namespace:CarouselDemo.Models"
+             x:DataType="viewModels:WelcomeViewModel"
+             
+             mc:Ignorable="d"
+             x:Class="CarouselDemo.MainPage">
+
+    <ContentPage.Content>
+        <StackLayout x:DataType="viewModels:WelcomeViewModel">
+            <CarouselView
+                ItemsSource="{Binding Carousels}"
+                PeekAreaInsets="0">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Carousel">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Image
+                                Margin="0,130,0,0"
+                                HeightRequest="250"
+                                Grid.Row="0"
+                                Source="{Binding Icon}"
+                                WidthRequest="220">
+                            </Image>
+                            <Label
+                                FontSize="Title"
+                                Grid.Row="1"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Header}"
+                                Padding="0,30,0,0">
+                            </Label>
+                            <Label
+                                Grid.Row="2"
+                                FontSize="Body"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Body}"
+                                Padding="20,30,20,0">
+                            </Label>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Button
+                BackgroundColor="Black"
+                HeightRequest="36"
+                HorizontalOptions="Center"
+                Margin="0,0,0,50"
+                Text="Let's Play"
+                TextColor="White"
+                WidthRequest="190">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
